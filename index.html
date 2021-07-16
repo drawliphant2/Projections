@@ -1,0 +1,41 @@
+<p><iframe src="https://preview.p5js.org/drawliphant/embed/9vt-kELO7" width="930" height="698"></iframe></p>
+<p>This little render toy can change camera projection methods so you can explore each one.</p>
+<h3>One Point Perspective (Most Common)</h3>
+<p>Most video games today use the very fast projection method One Point Perspective. Imagine a 3D object and trace a line from each point on the object to the camera. place a canvas in front of the camera and draw a point everywhere the line intersects the canvas.</p>
+<p><img src="&rdquo;https://www.scratchapixel.com/images/upload/rendering-3d-scene-overview/perspective4.png?&rdquo;" /><img src="https://www.scratchapixel.com/images/upload/rendering-3d-scene-overview/perspective4.png?" alt="Projection used in games" width="530" height="298" /></p>
+<table style="border-collapse: collapse; width: 100%;" border="1">
+<tbody>
+<tr>
+<td style="width: 50%;">Pros</td>
+<td style="width: 50%;">Cons</td>
+</tr>
+<tr>
+<td style="width: 50%;">Computationally efficient</td>
+<td style="width: 50%;">Barrel Distortion where things get smaller&nbsp;</td>
+</tr>
+<tr>
+<td style="width: 50%;">Keeps lines straight</td>
+<td style="width: 50%;">Objects become larger and stretched at the edges of the screen as FOV approaches 180</td>
+</tr>
+</tbody>
+</table>
+<h4>Calculation</h4>
+<p>Canvas x = X/Z, Canvas y = Y/Z, where capital letters are the 3d coordinates of the real object relative to the camera where XYZ are width, height, and depth respectively</p>
+<h3><strong>Curvilinear:&nbsp;</strong></h3>
+<p>This projection method places a dot based on the angle that the point is off-center. If the line to a point is 25 degrees up from the camera then it is drawn 25 pixels above the center of the canvas. This is very slow mathematically so another way to think about it is instead of objects getting smaller as their z distance increases they get smaller as their true euclidean distance increases. These two may not seem equivalent but they form the same picture. Because this projection is based on angles instead of a flat plane we can render more than a 180-degree FOV.</p>
+<table style="border-collapse: collapse; width: 100%;" border="1">
+<tbody>
+<tr>
+<td style="width: 50%;">Pros</td>
+<td style="width: 50%;">Cons</td>
+</tr>
+<tr>
+<td style="width: 50%;">Full 360 field of view</td>
+<td style="width: 50%;">Barrel Distortion, Objects get smaller is at the edge of the view</td>
+</tr>
+<tr>
+<td style="width: 50%;">&nbsp;</td>
+<td style="width: 50%;">All straight lines become curved&nbsp;</td>
+</tr>
+</tbody>
+</table>
